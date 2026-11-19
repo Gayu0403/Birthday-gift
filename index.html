@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -22,16 +23,16 @@ p{font-size:clamp(1rem,2.7vw,1.18rem);line-height:1.7;margin:12px 0}
 .small{font-size:.9rem;color:#936b70}
 #builder .panel{max-width:760px}
 .cake-area{height:370px;display:flex;align-items:flex-end;justify-content:center;position:relative;margin:12px auto 22px;max-width:440px}
-.cake{position:relative;width:min(300px,78vw);height:250px;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start}
+.cake{position:relative;width:min(300px,78vw);height:250px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 .plate{position:absolute;bottom:0;width:110%;height:20px;border-radius:50%;background:linear-gradient(#fff,#e7cbd0);box-shadow:0 7px 12px #703b4420}
 .layer{width:100%;height:0;opacity:0;position:relative;border-radius:12px 12px 7px 7px;background:linear-gradient(90deg,#48221f,#754033 35%,#51251f 70%,#3b1b19);box-shadow:inset 0 -9px 0 #321513, inset 0 7px 0 #9b6654;transition:height .6s,opacity .4s;margin-bottom:2px}
 .layer.show{height:62px;opacity:1}
 .layer:before{content:"";position:absolute;left:0;right:0;top:0;height:13px;border-radius:12px 12px 5px 5px;background:linear-gradient(#f5d8d0,#dba9a0)}
-.frosting{position:absolute;top:-8px;left:0;right:0;height:20px;border-radius:50%;background:#fff0e8;box-shadow:0 5px 0 #edc3bb;opacity:0;transition:.5s}
+.frosting{position:absolute;bottom:182px;left:0;right:0;height:20px;border-radius:50%;background:#fff0e8;box-shadow:0 5px 0 #edc3bb;opacity:0;transition:.5s}
 .frosting.show{opacity:1}
 .drip{position:absolute;top:5px;width:15px;height:25px;border-radius:0 0 10px 10px;background:#fff0e8}
 .drip:nth-child(2){left:18%}.drip:nth-child(3){left:48%;height:34px}.drip:nth-child(4){right:17%;height:20px}
-.candles{position:absolute;bottom:190px;display:flex;gap:22px;opacity:0;transition:.5s}
+.candles{position:absolute;bottom:202px;display:flex;gap:22px;opacity:0;transition:.5s}
 .candles.show{opacity:1}
 .candle{width:10px;height:48px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 6px,#e98aa6 6px 12px);position:relative}
 .flame{position:absolute;top:-19px;left:1px;width:9px;height:15px;background:#ffb52e;border-radius:50% 50% 50% 0;transform:rotate(-45deg);filter:drop-shadow(0 0 8px #ffb52e);animation:flicker .5s infinite alternate}
@@ -44,7 +45,7 @@ p{font-size:clamp(1rem,2.7vw,1.18rem);line-height:1.7;margin:12px 0}
 .pop{position:fixed;top:-40px;font-size:22px;pointer-events:none;animation:fall 4s linear forwards;z-index:5}
 @keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:.2}}
 .signature{text-align:center;font-weight:bold;color:#98485d;margin-top:20px}
-@media(max-height:700px){.cake-area{height:320px}.cake{height:220px}.layer.show{height:52px}.candles{bottom:165px}}
+@media(max-height:700px){.cake-area{height:320px}.cake{height:220px}.layer.show{height:52px}.frosting{bottom:152px}.candles{bottom:172px}}
 </style>
 </head>
 <body>
@@ -143,4 +144,4 @@ function confetti(){
 function replay(){step=0;['layer1','layer2','layer3','frosting','candles'].forEach(id=>document.getElementById(id).classList.remove('show'));document.getElementById('progress').style.width='0';document.getElementById('stepTitle').textContent='Step 1 — Add the first layer 🍫';document.getElementById('stepText').textContent='Every great birthday deserves a chocolate cake.';const b=document.getElementById('buildBtn');b.textContent='Add chocolate layer 🍫';b.onclick=nextStep;show('welcome');}
 </script>
 </body>
-</html># Birthday-gift
+</html>
