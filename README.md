@@ -1,1 +1,146 @@
-# Birthday-gift
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happiest Birthday, Kannadi! 🎂</title>
+<style>
+:root{--pink:#ffe8ef;--rose:#f6b7c9;--brown:#5b302b;--cream:#fff7ef;--choco:#4b241f}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,serif;color:var(--brown);background:radial-gradient(circle at top,#fff9fb,#f9dce7 65%,#f4c8d7);overflow-x:hidden}
+button{font:inherit;cursor:pointer;border:0}
+.screen{min-height:100vh;display:none;align-items:center;justify-content:center;padding:28px 16px;text-align:center}
+.screen.active{display:flex}
+.panel{width:min(720px,100%);padding:clamp(24px,5vw,48px) clamp(18px,5vw,44px);border:1px solid #ffffffb8;border-radius:30px;background:#fffaf5d9;box-shadow:0 18px 55px #7b35451c;backdrop-filter:blur(8px)}
+h1{font-size:clamp(2rem,7vw,3.8rem);margin:8px 0 14px;color:#873e50}
+h2{font-size:clamp(1.6rem,5vw,2.4rem);margin:8px 0 16px}
+p{font-size:clamp(1rem,2.7vw,1.18rem);line-height:1.7;margin:12px 0}
+.eyebrow{letter-spacing:3px;text-transform:uppercase;font:700 .72rem Arial,sans-serif;color:#b56a7d}
+.btn{background:#873e50;color:white;padding:14px 24px;border-radius:999px;margin:10px 5px;box-shadow:0 7px 0 #5e2937;transition:.15s}
+.btn:active{transform:translateY(4px);box-shadow:0 3px 0 #5e2937}
+.btn.secondary{background:#f2c6d2;color:#63313d;box-shadow:0 7px 0 #d99cac}
+.small{font-size:.9rem;color:#936b70}
+#builder .panel{max-width:760px}
+.cake-area{height:370px;display:flex;align-items:flex-end;justify-content:center;position:relative;margin:12px auto 22px;max-width:440px}
+.cake{position:relative;width:min(300px,78vw);height:250px;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start}
+.plate{position:absolute;bottom:0;width:110%;height:20px;border-radius:50%;background:linear-gradient(#fff,#e7cbd0);box-shadow:0 7px 12px #703b4420}
+.layer{width:100%;height:0;opacity:0;position:relative;border-radius:12px 12px 7px 7px;background:linear-gradient(90deg,#48221f,#754033 35%,#51251f 70%,#3b1b19);box-shadow:inset 0 -9px 0 #321513, inset 0 7px 0 #9b6654;transition:height .6s,opacity .4s;margin-bottom:2px}
+.layer.show{height:62px;opacity:1}
+.layer:before{content:"";position:absolute;left:0;right:0;top:0;height:13px;border-radius:12px 12px 5px 5px;background:linear-gradient(#f5d8d0,#dba9a0)}
+.frosting{position:absolute;top:-8px;left:0;right:0;height:20px;border-radius:50%;background:#fff0e8;box-shadow:0 5px 0 #edc3bb;opacity:0;transition:.5s}
+.frosting.show{opacity:1}
+.drip{position:absolute;top:5px;width:15px;height:25px;border-radius:0 0 10px 10px;background:#fff0e8}
+.drip:nth-child(2){left:18%}.drip:nth-child(3){left:48%;height:34px}.drip:nth-child(4){right:17%;height:20px}
+.candles{position:absolute;bottom:190px;display:flex;gap:22px;opacity:0;transition:.5s}
+.candles.show{opacity:1}
+.candle{width:10px;height:48px;border-radius:4px;background:repeating-linear-gradient(45deg,#fff 0 6px,#e98aa6 6px 12px);position:relative}
+.flame{position:absolute;top:-19px;left:1px;width:9px;height:15px;background:#ffb52e;border-radius:50% 50% 50% 0;transform:rotate(-45deg);filter:drop-shadow(0 0 8px #ffb52e);animation:flicker .5s infinite alternate}
+@keyframes flicker{to{transform:rotate(-38deg) scale(.85)}}
+.progress{height:8px;background:#f2d6dd;border-radius:10px;overflow:hidden;margin:15px auto;max-width:340px}
+.progress span{display:block;height:100%;width:0;background:#a34f66;transition:.4s}
+#surprise .panel{max-width:760px}
+.message{max-width:590px;margin:20px auto;text-align:left}
+.message p{margin:10px 0}
+.pop{position:fixed;top:-40px;font-size:22px;pointer-events:none;animation:fall 4s linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(110vh) rotate(650deg);opacity:.2}}
+.signature{text-align:center;font-weight:bold;color:#98485d;margin-top:20px}
+@media(max-height:700px){.cake-area{height:320px}.cake{height:220px}.layer.show{height:52px}.candles{bottom:165px}}
+</style>
+</head>
+<body>
+<section class="screen active" id="welcome">
+ <div class="panel">
+  <div class="eyebrow">A tiny birthday surprise</div>
+  <h1>Happiest birthday da Kannadi 🥳🫶</h1>
+  <h2>Heyyy youuu!</h2>
+  <p>LET'S MAKE YOUR VIRTUAL CAKE 🎂</p>
+  <p>The only cake which I can afford you 🤣</p>
+  <p>Ready to build your birthday cake😂?</p>
+  <button class="btn" onclick="startBuild()">Down — Let's make it!</button>
+  <p class="small">P.S. No calories. No delivery charge. Only love. 😂</p>
+ </div>
+</section>
+
+<section class="screen" id="builder">
+ <div class="panel">
+  <div class="eyebrow">Your very own chocolate cake</div>
+  <h2 id="stepTitle">Step 1 — Add the first layer 🍫</h2>
+  <p id="stepText">Every great birthday deserves a chocolate cake.</p>
+  <div class="progress"><span id="progress"></span></div>
+  <div class="cake-area">
+   <div class="cake">
+    <div class="candles" id="candles"><div class="candle"><i class="flame"></i></div><div class="candle"><i class="flame"></i></div><div class="candle"><i class="flame"></i></div></div>
+    <div class="layer" id="layer1"></div>
+    <div class="layer" id="layer2"></div>
+    <div class="layer" id="layer3"></div>
+    <div class="frosting" id="frosting"><i class="drip"></i><i class="drip"></i><i class="drip"></i></div>
+    <div class="plate"></div>
+   </div>
+  </div>
+  <button class="btn" id="buildBtn" onclick="nextStep()">Add chocolate layer 🍫</button>
+  <p class="small" id="musicStatus">🎵 Birthday music is ready — tap play!</p>
+  <button class="btn secondary" id="musicBtn" onclick="toggleMusic()">▶ Play birthday music</button>
+ </div>
+</section>
+
+<section class="screen" id="surprise">
+ <div class="panel">
+  <div class="eyebrow">One little surprise for you</div>
+  <h1>HAPPIEST BIRTHDAY!</h1>
+  <h2>UNCLEEEE UH🥳</h2>
+  <div class="message">
+   <p>The one who first became my friend in this class and somehow became special to me. 🫶</p>
+   <p>One more year older... but let's not talk about maturity as you're a toodler😂</p>
+   <p>🎂</p>
+   <p><b>Jokes apart,</b> wishing you a year full of happiness, success, peace and beautiful memories.</p>
+   <p>Keep smiling as always SIRIPAZHAGAN😂,</p>
+   <p>Keep growing and never stop being the crazy, wonderful person you are. And thanks for givin' me trouble by ragebaiting me!!😑</p>
+   <p>You deserve all the good things in life.</p>
+   <p>Have the best birthday dey! 🫶❤️</p>
+   <p>Stay happy. Keep shining. ✨</p>
+  </div>
+  <div class="signature">With lots of love (and virtual cake),<br>❤️</div>
+  <button class="btn" onclick="replay()">Replay the cake magic 🎂</button>
+ </div>
+</section>
+<script>
+let step=0, audioCtx=null, musicTimer=null, musicOn=false, note=0;
+const melody=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5,880,783.99,659.25,523.25];
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
+function startBuild(){show('builder');}
+function nextStep(){
+ step++;
+ const titles=['Step 2 — Add another chocolate layer 🍫','Step 3 — One last layer… obviously 😂','Step 4 — Frosting time! 🤍','Step 5 — Light up the candles! 🕯️','Your cake is ready! Make a wish ✨'];
+ const texts=['This cake is getting taller… unlike your maturity. 🤣','A three-layer chocolate cake because you deserve extra.','A little frosting to make it look fancy.','Three candles for the birthday boy.','Wait for it… your actual surprise is next!'];
+ if(step<=3){document.getElementById('layer'+step).classList.add('show');}
+ if(step===4)document.getElementById('frosting').classList.add('show');
+ if(step===5)document.getElementById('candles').classList.add('show');
+ document.getElementById('progress').style.width=(step/5*100)+'%';
+ document.getElementById('stepTitle').textContent=titles[step-1];
+ document.getElementById('stepText').textContent=texts[step-1];
+ const btn=document.getElementById('buildBtn');
+ if(step<5){btn.textContent=step===3?'Add frosting 🤍':step===4?'Light the candles 🕯️':'Add chocolate layer 🍫';}
+ else{btn.textContent='Open your birthday surprise 💌';btn.onclick=()=>{show('surprise');confetti();};}
+}
+function playTone(freq,duration=.28){
+ if(!audioCtx)return;
+ const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+ osc.type='sine';osc.frequency.value=freq;gain.gain.setValueAtTime(.0001,audioCtx.currentTime);
+ gain.gain.exponentialRampToValueAtTime(.09,audioCtx.currentTime+.03);
+ gain.gain.exponentialRampToValueAtTime(.0001,audioCtx.currentTime+duration);
+ osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration);
+}
+function toggleMusic(){
+ if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+ if(musicOn){clearInterval(musicTimer);musicOn=false;document.getElementById('musicBtn').textContent='▶ Play birthday music';return;}
+ audioCtx.resume();musicOn=true;document.getElementById('musicBtn').textContent='Ⅱ Pause birthday music';
+ musicTimer=setInterval(()=>{playTone(melody[note%melody.length]);note++;},360);
+}
+function confetti(){
+ const symbols=['🎉','🎊','✨','💗','🎈','🥳'];
+ for(let i=0;i<65;i++){const el=document.createElement('span');el.className='pop';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=Math.random()*100+'vw';el.style.animationDelay=Math.random()*2+'s';el.style.animationDuration=(3+Math.random()*3)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),7000);}
+}
+function replay(){step=0;['layer1','layer2','layer3','frosting','candles'].forEach(id=>document.getElementById(id).classList.remove('show'));document.getElementById('progress').style.width='0';document.getElementById('stepTitle').textContent='Step 1 — Add the first layer 🍫';document.getElementById('stepText').textContent='Every great birthday deserves a chocolate cake.';const b=document.getElementById('buildBtn');b.textContent='Add chocolate layer 🍫';b.onclick=nextStep;show('welcome');}
+</script>
+</body>
+</html># Birthday-gift
